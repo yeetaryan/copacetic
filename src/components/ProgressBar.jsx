@@ -1,5 +1,6 @@
-export default function ProgressBar() {
-  const text='hello world'//come and change this later silly muppet
+export default function ProgressBar(props) {
+  const {text,remainder}=props
+  //come and change this later silly muppet
   const arr=[0,1,2,3,4,5,6,7,8,9]
   //iteratively travsersing array
   return (
@@ -12,7 +13,7 @@ export default function ProgressBar() {
      <div className='Level-bar' key={elementIdx}></div> 
     )
 })}
-<div className='xp' style={{width:`${40}% `}}></div>
+<div className='xp' style={{width:`${remainder}% `}}></div>
    </div>
    )  
 }

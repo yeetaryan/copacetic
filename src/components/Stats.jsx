@@ -1,7 +1,16 @@
+import { calcLevel,calculateAccuracy,calculateNewWords } from '../utils'
 import ProgressBar from './ProgressBar'
-export default function Stats() {
-const name='Aryan'  
-const day=16
+export default function Stats(props) {
+//destructuring syntax
+const {name,day,attempts,PLAN}=props
+//const name='Aryan'  
+//const day=16
+/*day is needed at 2 places stop using the hard coded value 
+!challenge and Dashboard */
+const currlvl=calcLevel(day)
+console.log(currlvl)
+const floorLvl=Math.floor(currlvl)
+const remainder=(currlvl-floorLvl)*100
    return (
       <div className="card stats-card">
             <div className="welcome-text">
@@ -18,14 +27,14 @@ const day=16
   </div>
    <div>
     <p>Words seen</p>
-    <h4>{101}</h4>
+    <h4>{calculateNewWords(day-1)}</h4>
   </div>
    <div>
     <p>Accuracy</p>
-    <h4>{93.3.toFixed(2)}</h4>
+    <h4>{(calculateAccuracy(attempts,day)*100).toFixed(1)}</h4>
   </div>
 </div>   
- <ProgressBar/>
+ <ProgressBar text={`lvl ${floorLvl}`}remainder={remainder}/>
 </div> 
    )
  
